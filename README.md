@@ -1,8 +1,8 @@
-# The Daily Agent
+# The Daily Dose Agent
 
 A multi-agent personalized newspaper: 2 world stories, 1 science or wildlife story and the 5 latest AI items, printed as a 2-page paper and served by FastAPI.
 
-**Stack:** Python + uv, LangGraph, MCP (news tools server), LiteLLM (Groq with Gemini as backup), Pydantic, LangSmith, FastAPI, Jinja2, Docker, AWS (S3 / ECR / EC2).
+**Stack:** Python + uv, LangGraph, MCP (news tools server), LiteLLM (Groq with Gemini as backup), Pydantic, LangSmith, FastAPI, Jinja2, Docker, AWS (EC2).
 
 Start with **HOW_IT_WORKS.md** (the plain explanation and an example). 
 
@@ -30,14 +30,6 @@ The first live run: `uv run python main.py run`. Do not use `uvicorn --reload` o
 docker build -t daily-agent .
 docker run --env-file .env -p 8000:8000 daily-agent
 ```
-
-## AWS (simple path)
-
-1. S3: create a bucket, set `S3_BUCKET` in `.env` (editions get uploaded there).
-2. IAM: give the EC2 instance a role that can write to that bucket.
-3. ECR: create a repo, `docker build`, `docker tag`, `docker push`.
-4. EC2: install Docker, pull the image, `docker run -d --restart unless-stopped --env-file .env -p 80:8000 <image>`. Set `GENERATE_TOKEN` first.
-5. Daily run at 06:00 IST: cron entry `30 0 * * * curl -s -X POST -H "X-Token: <token>" "http://localhost:80/generate"`.
 
 ## Troubleshooting
 
