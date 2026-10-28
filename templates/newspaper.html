@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Daily Agent - {{ pretty_date }}</title>
+<style>
+  /* Print setup: A4, two pages. Page 1 = masthead + AI & Tech. Page 2 = Top Stories. */
+  @page { size: A4; margin: 12mm; }
+  :root { --ink: #1b1b1b; --muted: #5a5a5a; --rule: #1b1b1b; --paper: #fbf9f4; --accent: #8a1c1c; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: #e9e6df; color: var(--ink);
+         font-family: Georgia, "Times New Roman", serif; line-height: 1.45; }
+  .paper { max-width: 960px; margin: 16px auto; background: var(--paper); padding: 28px 34px 20px;
+           box-shadow: 0 2px 14px rgba(0,0,0,.18); }
+  .demo { background: var(--accent); color: #fff; text-align: center; font: 600 12px/1 sans-serif;
+          padding: 7px; letter-spacing: .08em; margin: -28px -34px 18px; }
+  header.masthead { text-align: center; border-bottom: 3px double var(--rule); padding-bottom: 10px; }
+  .masthead h1 { font-size: 56px; margin: 0; letter-spacing: .02em; font-weight: 700; }
+  .meta { display: flex; justify-content: space-between; font: 12px/1.2 sans-serif; color: var(--muted);
+          border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 5px 0; margin-top: 8px; }
+  .tagline { font-style: italic; color: var(--muted); margin: 6px 0 0; }
+
+  h2.section { font: 700 13px/1 sans-serif; text-transform: uppercase; letter-spacing: .14em;
+               margin: 22px 0 12px; padding-bottom: 5px; border-bottom: 2px solid var(--rule); }
+  h2.section.ai { color: var(--accent); }
+  h3 { margin: 0 0 4px; line-height: 1.15; }
+  .kicker { font: 700 11px/1 sans-serif; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 5px; }
+  .badge { font: 700 10px/1 sans-serif; background: var(--accent); color: #fff; padding: 2px 5px;
+           margin-left: 6px; vertical-align: middle; }
+  .src { font: 11.5px/1.3 sans-serif; color: var(--muted); margin-top: 4px; }
+  .src a { color: var(--muted); }
+  .why { font-style: italic; font-size: 14px; margin: 4px 0 0; }
+  p { margin: 0 0 6px; }
+
+  /* Picture slot: a real photo when we have one, otherwise a coloured category panel. */
+  .pic { position: relative; margin: 0 0 10px; overflow: hidden; background: #cfcfcf; }
+  .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ph { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 10px 12px;
+        color: rgba(255,255,255,.88); font: 700 11px/1 sans-serif; letter-spacing: .2em; text-transform: uppercase;
+        background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 2px, transparent 2px 7px); }
+  .ph-world { background-color: #34495e; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 2px, transparent 2px 7px), linear-gradient(135deg, #243342, #5b7186); }
+  .ph-science { background-color: #1f5a43; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 2px, transparent 2px 7px), linear-gradient(135deg, #17402f, #5a9a7b); }
+  .ph-ai { background-color: #6a1b1b; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 2px, transparent 2px 7px), linear-gradient(135deg, #4a1212, #a02b2b); }
+  .pic.hero { height: 250px; }
+  .pic.lead { height: 320px; }
+  .pic.side { height: 175px; }
+
+  /* AI band */
+  .ai-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 22px; }
+  .ai-hero h3 { font-size: 27px; }
+  .ai-hero p.body { font-size: 15.5px; }
+  .ai-list { border-left: 1px solid #bbb; padding-left: 18px; }
+  .ai-list article { padding-bottom: 9px; margin-bottom: 9px; border-bottom: 1px dotted #aaa; }
+  .ai-list article:last-child { border-bottom: 0; margin-bottom: 0; }
+  .ai-list h3 { font-size: 16.5px; }
+  .ai-list p { font-size: 13.5px; }
+
+  /* Top stories: lead story across the top, the other two side by side below it */
+  .lead { display: grid; grid-template-columns: 1.3fr 1fr; gap: 22px; padding-bottom: 16px;
+          border-bottom: 1px solid #bbb; margin-bottom: 16px; }
+  .lead .pic { margin: 0; }
+  .lead h3 { font-size: 31px; }
+  .lead p.body { font-size: 16.5px; }
+  .side { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .side article + article { border-left: 1px solid #bbb; padding-left: 22px; }
+  .side h3 { font-size: 21px; }
+
+  footer { margin-top: 22px; border-top: 3px double var(--rule); padding-top: 8px; font: 11.5px/1.4 sans-serif;
+           color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  @media (max-width: 720px) {
+    .ai-grid, .lead, .side { grid-template-columns: 1fr; }
+    .ai-list { border-left: 0; padding-left: 0; }
+    .side article + article { border-left: 0; padding-left: 0; }
+    .masthead h1 { font-size: 36px; }
+  }
+  @media print {
+    body { background: none; }
+    .paper { box-shadow: none; margin: 0; max-width: none; padding: 0; background: none; }
+    .demo { margin: 0 0 10px; }
+    article, figure { break-inside: avoid; }
+    h2.section { break-after: avoid; }
+    .ai-grid, .lead, .side { break-inside: avoid; }
+    /* Top Stories always starts a fresh page, so its heading is never left alone at the bottom of page 1. */
+    .page-break { break-before: page; }
+    .page-break h2.section { margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+  {% if edition.demo %}<div class="demo">DEMO EDITION - built from sample data, not real news</div>{% endif %}
+
+  <header class="masthead">
+    <h1>The Daily Dose</h1>
+    <div class="meta"><span>{{ pretty_date }}</span><span>Compiled by AI agents</span><span>Sources linked under every story</span></div>
+    <p class="tagline">{{ edition.tagline }}</p>
+  </header>
+
+  {# A picture slot. Real photo on top; the coloured panel underneath shows if there is no photo or it fails to load. #}
+  {% macro picture(story, size) %}
+    <figure class="pic {{ size }}">
+      <div class="ph ph-{{ story.category }}">{{ labels[story.category] }}</div>
+      {% if story.image_url %}<img src="{{ story.image_url }}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">{% endif %}
+    </figure>
+  {% endmacro %}
+
+  {% macro byline(story) %}
+    <div class="src">Source: <a href="{{ story.source_url }}" target="_blank" rel="noopener noreferrer">{{ story.source_name }}</a></div>
+  {% endmacro %}
+
+  {% if ai_hero %}
+  <h2 class="section ai">AI &amp; Tech Frontier</h2>
+  <section class="ai-grid">
+    <article class="ai-hero">
+      {{ picture(ai_hero, 'hero') }}
+      <h3>{{ ai_hero.headline }}{% if ai_hero.is_update %}<span class="badge">UPDATE</span>{% endif %}</h3>
+      <p class="body">{{ ai_hero.summary }}</p>
+      {% if ai_hero.why_it_matters %}<p class="why">Why it matters: {{ ai_hero.why_it_matters }}</p>{% endif %}
+      {{ byline(ai_hero) }}
+    </article>
+    <div class="ai-list">
+      {% for s in ai_rest %}
+      <article>
+        <h3>{{ s.headline }}{% if s.is_update %}<span class="badge">UPDATE</span>{% endif %}</h3>
+        <p>{{ s.summary }}</p>
+        {{ byline(s) }}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if lead %}
+  <div class="{% if ai_hero %}page-break{% endif %}">
+    <h2 class="section">Top Stories</h2>
+    <section>
+      <article class="lead">
+        {{ picture(lead, 'lead') }}
+        <div class="lead-text">
+          <div class="kicker">{{ labels[lead.category] }}</div>
+          <h3>{{ lead.headline }}{% if lead.is_update %}<span class="badge">UPDATE</span>{% endif %}</h3>
+          <p class="body">{{ lead.summary }}</p>
+          {% if lead.why_it_matters %}<p class="why">Why it matters: {{ lead.why_it_matters }}</p>{% endif %}
+          {{ byline(lead) }}
+        </div>
+      </article>
+      <div class="side">
+        {% for s in others %}
+        <article>
+          <div class="kicker">{{ labels[s.category] }}</div>
+          {{ picture(s, 'side') }}
+          <h3>{{ s.headline }}{% if s.is_update %}<span class="badge">UPDATE</span>{% endif %}</h3>
+          <p>{{ s.summary }}</p>
+          {% if s.why_it_matters %}<p class="why">Why it matters: {{ s.why_it_matters }}</p>{% endif %}
+          {{ byline(s) }}
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  <footer>
+    <span>Generated {{ edition.date[:10] }} by The Daily Agent (multi-agent pipeline).</span>
+    <span>Summaries are automatic; check the linked source for the full story.</span>
+  </footer>
+</div>
+</body>
+</html>

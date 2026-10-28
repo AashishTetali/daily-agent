@@ -1,0 +1,185 @@
+{
+  "note": "FICTIONAL sample data for demo mode and tests. These are not real news stories.",
+  "reference_top_stories": [
+    "flood defence pact coastal nations",
+    "central bank holds interest rates steady"
+  ],
+  "candidates": [
+    {
+      "id": "w1",
+      "category": "world",
+      "source": "Sample Wire",
+      "hours_ago": 2,
+      "title": "Coastal nations sign new flood defence agreement",
+      "url": "https://example.com/world/flood-agreement",
+      "snippet": "Twelve coastal nations signed an agreement to share flood defence funding.",
+      "image_url": null,
+      "text": "Twelve coastal nations signed an agreement on Monday to share the cost of flood defences. The pact sets up a fund of 4 billion dollars over ten years. Officials said the money will pay for sea walls, early warning systems and training for local crews. Several island states will receive the largest share."
+    },
+    {
+      "id": "w2",
+      "category": "world",
+      "source": "Sample Times",
+      "hours_ago": 4,
+      "title": "Flood defence pact signed by twelve coastal nations",
+      "url": "https://example.com/times/flood-pact",
+      "snippet": "A new pact among twelve coastal nations will fund sea walls and early warning systems.",
+      "image_url": null,
+      "text": "A new pact among twelve coastal nations will fund sea walls and early warning systems, negotiators said. The fund totals 4 billion dollars over ten years."
+    },
+    {
+      "id": "w3",
+      "category": "world",
+      "source": "Sample Wire",
+      "hours_ago": 6,
+      "title": "Central bank holds interest rates steady for third month",
+      "url": "https://example.com/world/rates-steady",
+      "snippet": "The central bank kept its main interest rate unchanged at 4.5 percent.",
+      "image_url": null,
+      "text": "The central bank kept its main interest rate unchanged at 4.5 percent for a third month in a row. The governor said inflation is easing but remains above the target. Markets had expected no change."
+    },
+    {
+      "id": "w4",
+      "category": "world",
+      "source": "Sample Times",
+      "hours_ago": 9,
+      "title": "Port workers end strike after two-week dispute",
+      "url": "https://example.com/times/port-strike-ends",
+      "snippet": "Port workers returned to work after unions and employers reached a pay deal.",
+      "image_url": null,
+      "text": "Port workers returned to work on Tuesday after unions and employers reached a pay deal. The strike lasted 14 days and delayed hundreds of ships. The deal includes a 6 percent pay rise over two years."
+    },
+    {
+      "id": "w5",
+      "category": "world",
+      "source": "Sample Wire",
+      "hours_ago": 12,
+      "title": "Regional summit opens with talks on energy supply",
+      "url": "https://example.com/world/summit-energy",
+      "snippet": "Leaders from nine countries began a two-day summit focused on energy supply.",
+      "image_url": null,
+      "text": "Leaders from nine countries began a two-day summit focused on energy supply and grid links. Talks will cover shared power lines and storage projects. A joint statement is expected on Wednesday."
+    },
+    {
+      "id": "w6",
+      "category": "world",
+      "source": "Sample Times",
+      "hours_ago": 20,
+      "title": "Heatwave forces schools to close in southern region",
+      "url": "https://example.com/times/heatwave-schools",
+      "snippet": "Schools in the southern region will stay closed as temperatures pass 44 degrees.",
+      "image_url": null,
+      "text": "Schools in the southern region will stay closed for three days as temperatures pass 44 degrees. Health officials urged people to drink water and avoid outdoor work at midday."
+    },
+    {
+      "id": "s1",
+      "category": "science",
+      "source": "Sample Science",
+      "hours_ago": 5,
+      "title": "Researchers find deep-sea coral reef thriving near volcanic vents",
+      "url": "https://example.com/science/deep-coral",
+      "snippet": "A research team found a coral reef living at 1,800 metres depth near volcanic vents.",
+      "image_url": null,
+      "text": "A research team found a coral reef living at 1,800 metres depth near volcanic vents in the Pacific. The reef covers about 2 square kilometres and hosts several species new to science. The team used a remote submarine to film the site. The findings suggest life can thrive on chemical energy far from sunlight."
+    },
+    {
+      "id": "s2",
+      "category": "science",
+      "source": "Sample Science",
+      "hours_ago": 8,
+      "title": "Telescope team spots unusual radio signal pattern from distant star",
+      "url": "https://example.com/science/radio-pattern",
+      "snippet": "Astronomers detected a repeating radio pattern from a star 300 light years away.",
+      "image_url": null,
+      "text": "Astronomers detected a repeating radio pattern from a star about 300 light years away. The signal repeats every 22 minutes. The team said natural causes such as magnetic activity are the most likely explanation, and more observations are planned."
+    },
+    {
+      "id": "s3",
+      "category": "science",
+      "source": "Sample Nature Desk",
+      "hours_ago": 10,
+      "title": "Snow leopard numbers rise after community conservation scheme",
+      "url": "https://example.com/wildlife/snow-leopard",
+      "snippet": "A survey counted 18 percent more snow leopards after villagers joined a conservation scheme.",
+      "image_url": null,
+      "text": "A survey counted 18 percent more snow leopards across three valleys after villagers joined a conservation scheme. Herders were paid for livestock lost to leopards and helped build predator-proof pens. Rangers said camera traps recorded 41 individual animals this year."
+    },
+    {
+      "id": "s4",
+      "category": "science",
+      "source": "Sample Science",
+      "hours_ago": 30,
+      "title": "New battery material survives 10,000 charge cycles in lab tests",
+      "url": "https://example.com/science/battery-material",
+      "snippet": "Engineers reported a battery material that kept most of its capacity after 10,000 cycles.",
+      "image_url": null,
+      "text": "Engineers reported a battery material that kept 90 percent of its capacity after 10,000 charge cycles in lab tests. The work has not yet been tested in full-size cells, the authors noted."
+    },
+    {
+      "id": "a1",
+      "category": "ai",
+      "source": "Sample AI Lab",
+      "hours_ago": 3,
+      "title": "Lab releases open-weight language model with 32K context",
+      "url": "https://example.com/ai/open-weight-model",
+      "snippet": "A research lab released an open-weight language model that reads 32,000 tokens at once.",
+      "image_url": null,
+      "text": "A research lab released an open-weight language model that can read 32,000 tokens at once. The model has 8 billion parameters and ships under a permissive licence. The lab said it scores well on coding and maths tests and runs on a single consumer graphics card."
+    },
+    {
+      "id": "a2",
+      "category": "ai",
+      "source": "Sample arXiv",
+      "hours_ago": 7,
+      "title": "Researchers propose faster attention method for long documents",
+      "url": "https://example.com/ai/fast-attention",
+      "snippet": "A paper proposes an attention method that cuts memory use for long documents.",
+      "image_url": null,
+      "text": "A paper proposes an attention method that cuts memory use for long documents by reusing earlier computations. The authors report up to 3 times faster processing on documents of 100,000 tokens. Code is promised for release soon."
+    },
+    {
+      "id": "a3",
+      "category": "ai",
+      "source": "Sample Model Hub",
+      "hours_ago": 11,
+      "title": "Trending model translates speech in 40 languages",
+      "url": "https://example.com/ai/speech-translation",
+      "snippet": "A speech translation model is trending, supporting 40 languages.",
+      "image_url": null,
+      "text": "A speech translation model is trending on a model hub. It supports 40 languages and can translate speech directly without writing text first. Early users note that quality is lower for rare languages."
+    },
+    {
+      "id": "a4",
+      "category": "ai",
+      "source": "Sample Tech Daily",
+      "hours_ago": 14,
+      "title": "Startup unveils small vision model that runs on phones",
+      "url": "https://example.com/ai/phone-vision-model",
+      "snippet": "A startup released a vision model small enough to run on a phone.",
+      "image_url": null,
+      "text": "A startup released a vision model small enough to run on a phone. The model has 1 billion parameters and can describe images and read printed text. The company said it works offline."
+    },
+    {
+      "id": "a5",
+      "category": "ai",
+      "source": "Sample Tech Daily",
+      "hours_ago": 26,
+      "title": "Benchmark group publishes new reasoning test for models",
+      "url": "https://example.com/ai/reasoning-benchmark",
+      "snippet": "A benchmark group published a reasoning test with 500 new questions.",
+      "image_url": null,
+      "text": "A benchmark group published a reasoning test with 500 new questions written by experts. Early results show leading models answer fewer than half correctly. The questions are kept private to avoid training on them."
+    },
+    {
+      "id": "a6",
+      "category": "ai",
+      "source": "Sample AI Lab",
+      "hours_ago": 40,
+      "title": "Open-source toolkit simplifies building AI agents",
+      "url": "https://example.com/ai/agent-toolkit",
+      "snippet": "An open-source toolkit helps developers connect AI models to tools and data.",
+      "image_url": null,
+      "text": "An open-source toolkit helps developers connect AI models to tools and data with a few lines of code. It supports the Model Context Protocol and includes tracing. The first version is available on GitHub."
+    }
+  ]
+}
